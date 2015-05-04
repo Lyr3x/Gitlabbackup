@@ -5,10 +5,5 @@ A small shellscript to backup your Gitlab and push it to your S3 storage
 - Create a bucket and a new Key
 - install s3cmd: `sudo apt-get install s3cmd`
 - Setup s3cmd with `s3cmd --configure`
-- Ensure you choosed the right install method (uncomment the right one)
+- Select your config and set the right path to the directories
 - run the script
-
-## Future
-- config
-- log
-- restore
