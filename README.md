@@ -7,3 +7,8 @@ A small shellscript to backup your Gitlab and push it to your S3 storage
 - Setup s3cmd with `s3cmd --configure`
 - Ensure you choosed the right install method (uncomment the right one)
 - run the script
+
+## Future
+- config
+- log
+- restore
