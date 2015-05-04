@@ -28,9 +28,9 @@ You need to setup s3cmd with s3cmd --configure first
 s3cmd sync --skip-existing --delete-removed /home/git/gitlab/tmp/backups/ s3://[your_bucket]/gitlab/backups/
 }
 
-# Get Home of the script
-if [$INSTALL == "omnibus"]
+Get Home of the script
+if [ $INSTALL == "omnibus" ]
 	then omnibus_package
-elif [$INSTALL == "source"]
+elif [ $INSTALL == "source" ]
 	then source_install
 fi
