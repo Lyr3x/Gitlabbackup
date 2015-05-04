@@ -29,8 +29,8 @@ s3cmd sync --skip-existing --delete-removed /home/git/gitlab/tmp/backups/ s3://[
 }
 
 # Get Home of the script
-if $INSTALL == 'omnibus'
+if [$INSTALL == "omnibus"]
 	then omnibus_package
-elif $INSTALL =='source'
+elif [$INSTALL == "source"]
 	then source_install
 fi
