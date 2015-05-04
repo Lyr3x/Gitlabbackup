@@ -1,0 +1,12 @@
+# # # # # # # # # # # #
+# Configuration file  #
+# # # # # # # # # # # # 
+
+# # Installation Method (source or omnibus)
+# INSTALL="source"
+
+# #backup directory (Gitlabserver)
+# BACKUP_DIRECTORY = "/home/git/gitlab/tmp/backups"
+
+# #S3 directory
+# AWS_DIRECTORY ="[your bucket]/gitlab/backups/"
