@@ -21,10 +21,10 @@ s3cmd sync --skip-existing --delete-removed $BACKUP_DIRECTORY s3://$AWS_DIRECTOR
 source_install(){
 cd /home/git/gitlab
 sudo -u git -H bundle exec rake gitlab:backup:create RAILS_ENV=production
-Delete backups which are older than 30 days
+# Delete backups which are older than 30 days
 find /home/git/gitlab/tmp/backups/*.tar -mtime +30 -exec rm {} \;
-Sync with your S3 Server
-You need to setup s3cmd with s3cmd --configure first
+# Sync with your S3 Server
+# You need to setup s3cmd with s3cmd --configure first
 s3cmd sync --skip-existing --delete-removed /home/git/gitlab/tmp/backups/ s3://[your_bucket]/gitlab/backups/
 }
 
