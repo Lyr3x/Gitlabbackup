@@ -7,5 +7,5 @@ BACKUPDIRECTORY='/home/lyrex/gitlab/backups/'
 cd $BACKUPDIRECTORY
 git add *
 TIME=$(date +"%d-%m-%Y")
-git commit all -m "$TIME"
+git commit --all -m "$TIME"
 git push
