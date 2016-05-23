@@ -4,7 +4,6 @@ BACKUPDIRECTORY='/home/lyrex/gitlab/backups/'
 #Make a new backup
 
 #Sync with an Github/Gitlab Repository
-cp -R * /var/opt/gitlab/backups $BACKUPDIRECTORY
 cd $BACKUPDIRECTORY
 git add *
 TIME=$(date +"%d-%m-%Y")
