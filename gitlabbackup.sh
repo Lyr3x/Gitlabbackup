@@ -2,7 +2,7 @@
 pushd `dirname $0` > /dev/null
 HOME=`pwd -P`
 popd > /dev/null
-
+BACKUPDIRECTORY = `/home/lyrex/gitlab/backups/`
 cd $HOME
 source ./conf/config.cfg
 ### For omnibus package ###
@@ -10,10 +10,17 @@ source ./conf/config.cfg
 omnibus_package(){
 gitlab-rake gitlab:backup:create
 #Delete backups which are older than 30 days
-find $BACKUP_DIRECTORY/*.tar -mtime +30 -exec rm {} \;
+find $BACKUPDIRECTORY*.tar -mtime +30 -exec rm {} \;
 #Sync with your S3 Server
 #You need to setup s3cmd with s3cmd --configure first
-s3cmd sync --skip-existing --delete-removed $BACKUP_DIRECTORY s3://$AWS_DIRECTORY
+s3cmd sync --skip-existing --delete-removed $BACKUPDIRECTORY s3://$AWS_DIRECTORY
+#Sync with an Github/Gitlab Repository
+cp * /var/opt/gitlab/backups $BACKUPDIRECTORY
+cd $BACKUPDIRECTORY
+git add *
+TIME=$(date +"%d-%m-%Y")
+git commit all -m "$TIME"
+git push
 }
 
 ### For Source install ### 
@@ -26,6 +33,13 @@ find /home/git/gitlab/tmp/backups/*.tar -mtime +30 -exec rm {} \;
 # Sync with your S3 Server
 # You need to setup s3cmd with s3cmd --configure first
 s3cmd sync --skip-existing --delete-removed /home/git/gitlab/tmp/backups/ s3://[your_bucket]/gitlab/backups/
+#Sync with an Github/Gitlab Repository
+cp * /var/opt/gitlab/backups $BACKUPDIRECTORY
+cd $BACKUPDIRECTORY
+git add *
+TIME=$(date +"%d-%m-%Y")
+git commit all -m "$TIME"
+git push
 }
 
 #Get Home of the script
