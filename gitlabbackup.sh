@@ -1,5 +1,5 @@
 #!/bin/bash
-BACKUPDIRECTORY = `/home/lyrex/gitlab/backups/`
+BACKUPDIRECTORY='/home/lyrex/gitlab/backups/'
 ### For omnibus package ###
 #Make a new backup
 
